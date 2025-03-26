@@ -1,0 +1,20 @@
+repos:
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.12.0 # Use the latest stable version
+    hooks:
+      - id: isort
+        name: isort (python)
+        args: ["--profile", "black"]
+
+  - repo: https://github.com/psf/black
+    rev: 23.12.1 # Use the latest stable version
+    hooks:
+      - id: black
+        language_version: python3
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.1.0 # Use the latest stable version
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-bugbear # Optional, but recommended
