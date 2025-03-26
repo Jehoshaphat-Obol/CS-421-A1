@@ -5,6 +5,10 @@ on:
     branches: [ "main", "dev" ]
   pull_request:
     branches: [ "main", "dev" ]
+    
+env:
+  DEBUG: 'true'
+  SECRET_KEY: 'django-insecure-=x9l_0fdkt-1se8lyt3qr-wq2fmatlj_v^tm8o3^viq!*5tq@6'
 
 jobs:
   build:
