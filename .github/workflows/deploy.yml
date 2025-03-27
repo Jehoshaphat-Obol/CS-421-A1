@@ -43,4 +43,28 @@ jobs:
             cd /home/ubuntu/app
             source ./env/bin/activate
             pip install -r requirements.txt
+            # run gunicorn
+            gunicorn --config ./gunicorn.conf.py cs_421_a1.wsgi:application
+            # setup nginx server
+            sudo systemctl stop nginx #stop nginx before changing configuration.
+            sudo rm /etc/nginx/sites-available/django_app #remove old configuration.
+            echo "server {
+                listen 80;
+                server_name ${{ secrets.HOST_DNS }};
+
+                location = /favicon.ico { access_log off; log_not_found off; }
+                location /static/ {
+                    root /home/ubuntu/app;
+                }
+
+                location / {
+                    proxy_pass http://127.0.0.1:8000;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+                }
+            }" | sudo tee /etc/nginx/sites-available/django_app
+            sudo ln -sf /etc/nginx/sites-available/django_app /etc/nginx/sites-enabled/
+            sudo systemctl restart nginx
             
