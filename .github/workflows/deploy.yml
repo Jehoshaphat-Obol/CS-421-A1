@@ -1,6 +1,6 @@
 name: Deploy-to-EC2 instance
 
-# Trigger deployment only on push to main branch 
+# Trigger deployment only on push to main branch
 on:
   push:
     branches:
@@ -90,5 +90,3 @@ jobs:
             sudo chmod +x /home/ubuntu/ubuntu
             sudo chmod +x /home/ubuntu/app
             sudo chown -R www-data:www-data /home/ubuntu/app/static/
-
-            
