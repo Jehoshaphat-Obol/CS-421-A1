@@ -84,7 +84,6 @@ jobs:
                     proxy_set_header X-Forwarded-Proto \$scheme;
                 }
             }" | sudo tee /etc/nginx/conf.d/app.conf
-            sudo systemctl daemon-reload
             sudo systemctl restart nginx
 
             
