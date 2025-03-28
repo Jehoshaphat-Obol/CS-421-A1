@@ -1,6 +1,8 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
+from .models import Student, Subject
+from django.urls import reverse
 
 # Create your tests here.
 class APITestCase(TestCase):
@@ -17,12 +19,12 @@ class APITestCase(TestCase):
         )
 
     def test_get_students(self):
-        response = self.client.get("/students/")
+        response = self.client.get(reverse("api:student-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.json()), 10)
 
     def test_get_subjects(self):
-        response = self.client.get("/subjects/")
+        response = self.client.get(reverse("api:subject-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.json()), 10)
 
