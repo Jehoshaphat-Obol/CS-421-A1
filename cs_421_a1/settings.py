@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import dotenv
 import os
+import subprocess
+
 
 dotenv.load_dotenv()
 
@@ -33,7 +35,10 @@ def parse_str_to_bool(text):
 
 DEBUG = parse_str_to_bool(os.getenv("DEBUG"))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+if not DEBUG:
+    hostname = subprocess.check_output(['hostname']).decode('utf-8').strip()
+    ALLOWED_HOSTS = ['ec2-13-60-162-177.eu-north-1.compute.amazonaws.com']
 
 
 # Application definition
@@ -124,6 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

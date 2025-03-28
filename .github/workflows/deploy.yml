@@ -43,11 +43,28 @@ jobs:
             cd /home/ubuntu/app
             source ./env/bin/activate
             pip install -r requirements.txt
-            # run gunicorn
-            gunicorn --config ./gunicorn.conf.py cs_421_a1.wsgi:application
+            python manage.py collectstatic --noinput
+            # Create gunicorn service file
+            echo "[Unit]
+            Description=gunicorn daemon
+            After=network.target
+
+            [Service]
+            User=ubuntu
+            WorkingDirectory=/home/ubuntu/app
+            ExecStart=/home/ubuntu/app/env/bin/gunicorn --config /home/ubuntu/app/gunicorn.conf.py cs_421_a1.wsgi:application
+
+            [Install]
+            WantedBy=multi-user.target" | sudo tee /etc/systemd/system/gunicorn.service
+
+            # Start gunicorn service
+            sudo systemctl daemon-reload
+            sudo systemctl enable gunicorn
+            sudo systemctl restart gunicorn
+
             # setup nginx server
-            sudo systemctl stop nginx #stop nginx before changing configuration.
-            sudo rm -f /etc/nginx/conf.d/app.conf #remove old configuration.
+            sudo systemctl stop nginx
+            sudo rm -f /etc/nginx/conf.d/app.conf
             echo "server {
                 listen 80;
                 server_name ${{ secrets.HOST_DNS }};
@@ -67,4 +84,5 @@ jobs:
             }" | sudo tee /etc/nginx/conf.d/app.conf
             sudo systemctl daemon-reload
             sudo systemctl restart nginx
+
             
