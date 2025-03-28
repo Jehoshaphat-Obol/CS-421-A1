@@ -37,7 +37,6 @@ DEBUG = parse_str_to_bool(os.getenv("DEBUG"))
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 if not DEBUG:
-    hostname = subprocess.check_output(['hostname']).decode('utf-8').strip()
     ALLOWED_HOSTS = ['ec2-13-60-162-177.eu-north-1.compute.amazonaws.com']
 
 
