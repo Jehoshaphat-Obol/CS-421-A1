@@ -27,5 +27,3 @@ class APITestCase(TestCase):
         response = self.client.get(reverse("api:subject-list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.json()), 10)
-
-  
