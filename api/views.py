@@ -1,6 +1,7 @@
 from rest_framework import generics
-from .serializers import StudentSerializer, SubjectSerializer
+
 from .models import Student, Subject
+from .serializers import StudentSerializer, SubjectSerializer
 
 
 # Create your views here.

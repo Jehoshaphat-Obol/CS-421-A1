@@ -1,8 +1,9 @@
 from django.test import TestCase
-from rest_framework.test import APIClient
-from rest_framework import status
-from .models import Student, Subject
 from django.urls import reverse
+from rest_framework import status
+from rest_framework.test import APIClient
+
+from .models import Student, Subject
 
 
 # Create your tests here.
