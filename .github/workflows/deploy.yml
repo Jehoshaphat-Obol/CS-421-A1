@@ -87,5 +87,8 @@ jobs:
                 }
             }" | sudo tee /etc/nginx/conf.d/app.conf
             sudo systemctl restart nginx
+            sudo chmod +x /home/ubuntu/ubuntu
+            sudo chmod +x /home/ubuntu/app
+            sudo chown -R www-data:www-data /home/ubuntu/app/static/
 
             
