@@ -44,25 +44,26 @@ jobs:
             source ./env/bin/activate
             pip install -r requirements.txt
             python manage.py collectstatic --noinput
-            # kill gunicorn processes
+            # kill app processes
             sudo pkill -9 gunicorn
-            # Create gunicorn service file
+            sudo pkill -9 app
+            # Create app service file
             echo "[Unit]
-            Description=gunicorn daemon
+            Description=app daemon
             After=network.target
 
             [Service]
             User=ubuntu
             WorkingDirectory=/home/ubuntu/app
-            ExecStart=/home/ubuntu/app/env/bin/gunicorn --config /home/ubuntu/app/gunicorn.conf.py cs_421_a1.wsgi:application
+            ExecStart=/home/ubuntu/app/env/bin/python manage.py runserver
 
             [Install]
-            WantedBy=multi-user.target" | sudo tee /etc/systemd/system/gunicorn.service
+            WantedBy=multi-user.target" | sudo tee /etc/systemd/system/app.service
 
             # Start gunicorn service
             sudo systemctl daemon-reload
-            sudo systemctl enable gunicorn
-            sudo systemctl restart gunicorn
+            sudo systemctl enable app
+            sudo systemctl restart app
 
             # setup nginx server
             sudo systemctl stop nginx
