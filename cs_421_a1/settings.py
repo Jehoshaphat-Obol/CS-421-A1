@@ -37,7 +37,7 @@ DEBUG = parse_str_to_bool(os.getenv("DEBUG"))
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 if not DEBUG:
-    ALLOWED_HOSTS = ['ec2-13-60-162-177.eu-north-1.compute.amazonaws.com']
+    ALLOWED_HOSTS = ['ec2-13-60-162-177.eu-north-1.compute.amazonaws.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
