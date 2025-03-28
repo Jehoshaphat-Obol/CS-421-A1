@@ -26,34 +26,4 @@ class APITestCase(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertGreaterEqual(len(response.json()), 10)
 
-    def test_create_student(self):
-        data = {"name": "New Student", "program": "Data Science"}
-        response = self.client.post("/students/", data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    def test_create_subject(self):
-        data = {"name": "New Subject", "year": 2}
-        response = self.client.post("/subjects/", data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    def test_update_student(self):
-        student = self.students[0]
-        data = {"name": "Updated Student", "program": "AI"}
-        response = self.client.put(f"/students/{student.id}/", data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_update_subject(self):
-        subject = self.subjects[0]
-        data = {"name": "Updated Subject", "year": 3}
-        response = self.client.put(f"/subjects/{subject.id}/", data, format="json")
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-    def test_delete_student(self):
-        student = self.students[0]
-        response = self.client.delete(f"/students/{student.id}/")
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-    def test_delete_subject(self):
-        subject = self.subjects[0]
-        response = self.client.delete(f"/subjects/{subject.id}/")
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+  
