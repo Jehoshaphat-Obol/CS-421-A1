@@ -4,6 +4,7 @@ from rest_framework import status
 from .models import Student, Subject
 from django.urls import reverse
 
+
 # Create your tests here.
 class APITestCase(TestCase):
     def setUp(self):

@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from rest_framework import generics
 from .serializers import StudentSerializer, SubjectSerializer
 from .models import Student, Subject
+
 
 # Create your views here.
 class StudentListView(generics.ListAPIView):
