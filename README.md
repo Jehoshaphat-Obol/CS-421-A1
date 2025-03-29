@@ -71,7 +71,7 @@ This API was developed to fulfill the requirements of a task that involved creat
         ![browsableAPI](./docs/image2.png)
     * for pure json response choose JSON
         ![json](./docs/image3.png)
-        or user cli tools or postman
+        or user command-line tools or postman
         ![json](./docs/image4.png)
 
 7. **Read API documenation [here](http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/) or visit `http://127.0.0.1:8000/` from your local development server**
