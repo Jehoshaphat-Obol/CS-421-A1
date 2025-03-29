@@ -62,16 +62,16 @@ This API was developed to fulfill the requirements of a task that involved creat
     ```
 
     The API will be available at `http://127.0.0.1:8000/`.
-6. **Basic api navigation**
-    By default the api i accessible through the browserable view as seen below from the web browser.
-    ![browsableapi](./docs/image.png)
-    - for GUI interaction with the api choose api (default)
-        ![browsableapi](./docs/image2.png)
+6. **Basic API navigation**
+    By default the API i accessible through the browserable view as seen below from the web browser.
+    ![browsableAPI](./docs/image.png)
+    - for GUI interaction with the API choose API (default)
+        ![browsableAPI](./docs/image2.png)
     - for pure json response choose JSON or append
         ![json](./docs/image3.png)
 
 
-7. **Read api documenation [here](http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/) or visit `http://127.0.0.1:8000/` from your local development server**
+7. **Read API documenation [here](http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/) or visit `http://127.0.0.1:8000/` from your local development server**
 
 ## Dependencies
 
