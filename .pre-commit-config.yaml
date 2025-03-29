@@ -31,10 +31,8 @@ repos:
       - id: mypy
         exclude: ^env/
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.37.0 
+    rev: v0.37.0
     hooks:
       - id: markdownlint
-        args: [--fix] 
+        args: [--fix]
         exclude: ^env/
-  - repo: https://github.com/textlint/textlint
-    rev: v13.5.1

@@ -18,14 +18,14 @@ This API was developed to fulfill the requirements of a task that involved creat
 
 ## Setup Instructions
 
-1.  **Clone the Repository:**
+1. **Clone the Repository:**
 
     ```bash
     git clone <repository_url>
     cd <project_directory>
     ```
 
-2.  **Create a Virtual Environment (Recommended):**
+2. **Create a Virtual Environment (Recommended):**
 
     ```bash
     python3 -m venv venv
@@ -33,13 +33,13 @@ This API was developed to fulfill the requirements of a task that involved creat
     venv\Scripts\activate  # On Windows
     ```
 
-3.  **Install Dependencies:**
+3. **Install Dependencies:**
 
     ```bash
     pip install -r requirements.txt
     ```
 
-4.  **Configure Database:**
+4. **Configure Database:**
 
     * Run migrations to create database tables:
 
@@ -47,7 +47,9 @@ This API was developed to fulfill the requirements of a task that involved creat
         python manage.py makemigrations
         python manage.py migrate
         ```
+
     * Populate the database with sample student and subject data. You can either use Django's shell or run the following commands
+
         ```bash
         chmod +x ./students.sh
         chmod +x ./subjects.sh
@@ -55,7 +57,7 @@ This API was developed to fulfill the requirements of a task that involved creat
         ./subjects.sh
         ```
 
-5.  **Run the Django Development Server (for testing):**
+5. **Run the Django Development Server (for testing):**
 
     ```bash
     python manage.py runserver
@@ -65,11 +67,10 @@ This API was developed to fulfill the requirements of a task that involved creat
 6. **Basic API navigation**
     By default the API i accessible through the browserable view as seen below from the web browser.
     ![browsableAPI](./docs/image.png)
-    - for GUI interaction with the API choose API (default)
+    * for GUI interaction with the API choose API (default)
         ![browsableAPI](./docs/image2.png)
-    - for pure json response choose JSON or append
+    * for pure json response choose JSON or append
         ![json](./docs/image3.png)
-
 
 7. **Read API documenation [here](http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/) or visit `http://127.0.0.1:8000/` from your local development server**
 
