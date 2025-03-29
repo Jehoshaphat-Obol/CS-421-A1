@@ -45,6 +45,7 @@ jobs:
             cd /home/ubuntu/app
             source ./env/bin/activate
             pip install -r requirements.txt
+            sudo chown -R ubuntu:ubuntu /home/ubuntu/app/static/
             python manage.py collectstatic --noinput
             python manage.py makemigrations
             python manage.py migrate
