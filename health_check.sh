@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-source ~/.env
+source /home/ubuntu/.env
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 server_health_log=$SERVER_HEALTH_LOG
 
