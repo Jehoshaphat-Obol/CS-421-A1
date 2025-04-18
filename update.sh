@@ -21,7 +21,7 @@ fi
 # Pull the latest changes from the GitHub repository
 log_message "Pulling latest changes from GitHub repository..."
 cd /home/ubuntu/app || exit 1
-git pull origin master
+git pull origin main
 if [ $? -eq 0 ]; then
     log_message "Git pull successful."
 else
