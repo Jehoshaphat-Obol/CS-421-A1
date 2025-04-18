@@ -99,6 +99,6 @@ jobs:
             sudo chmod +x /home/ubuntu/app
             sudo chown -R www-data:www-data /home/ubuntu/app/static/
             # set env for health check
-            export SERVER_HEALTH_LOG="${{ secrets.SERVER_HEALTH_LOG }}"
+            echo 'SERVER_HEALTH_LOG="${{ secrets.SERVER_HEALTH_LOG }}"' >> ~/.env
             chmod +x /home/ubuntu/app/health_check.sh
             chmod +x /home/ubuntu/app/update.sh
