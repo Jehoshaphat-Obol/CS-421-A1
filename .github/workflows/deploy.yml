@@ -33,6 +33,8 @@ jobs:
           script: |
             # set env
             echo "${{ secrets.ENV }}" > .env
+            # set env for health check
+            export SERVER_HEALTH_LOG="${{ secrets.SERVER_HEALTH_LOG }}"
             # install nginx
             sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
             curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
