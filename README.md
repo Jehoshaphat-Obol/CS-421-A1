@@ -83,6 +83,52 @@ This API was developed to fulfill the requirements of a task that involved creat
 * psycopg2 (if using PostgreSQL) or mysqlclient (if using MySQL) or sqlite3 (if using SQLite)
 * Any other required packages listed in `requirements.txt`.
 
-## Version Control
+# Assignment 2
 
-This project uses Git for version control. Regular commits and pushes are made to track progress and milestones.
+## Types of Backups
+
+There are mainly three strategies used to back up applications in software development.
+
+### 1. Full Backup
+
+In a full backup, all project files and data are copied and stored in a backup storage regularly. For example, if backups are scheduled to be done on Sunday, Monday, and Tuesday, each of these backups will generate a full copy/instance/snapshot of the application at the time the backup was made.
+
+#### Advantages
+1. It is a fast restoration strategy as it does not require backtracking or referencing previous backups to restore the system.
+2. System restoration and recovery time is fast and straightforward.
+3. All data is stored in one place, making it easier to manage.
+
+#### Disadvantages
+1. Requires high bandwidth to perform the backup operation.
+2. High storage consumption since every backup stores the entire project and its data, even if no changes occurred.
+
+---
+
+### 2. Differential Backup
+
+This strategy only copies data that has changed since the last full backup. For example, if the last full backup was made on Sunday, then the backups made on Monday, Tuesday, and so on will contain only the changes since Sunday.
+
+#### Advantages
+1. Saves storage space compared to full backups.
+2. Faster to execute than a full backup, since only changed files are copied.
+3. Easier to restore than incremental backups, requiring only the last full backup and the latest differential backup.
+
+#### Disadvantages
+1. Requires more storage than incremental backups, as data changes accumulate with each backup until the next full backup.
+2. Recovery takes slightly longer than a full backup, as it involves at least two backup files (the full and the latest differential).
+
+---
+
+### 3. Incremental Backup
+
+This strategy only copies data changes since the last backup of any kind—whether full or incremental. For example, if a full backup is made on Sunday, an incremental backup on Monday will store changes since Sunday, and Tuesday's backup will store only changes since Monday's backup, and so on.
+
+#### Advantages
+1. Saves the most storage space of all three strategies.
+2. Backup operations are quick and require minimal resources.
+3. Efficient in terms of time and bandwidth.
+
+#### Disadvantages
+1. Restoration can be slow and complex, as it requires the last full backup and every incremental backup made since then.
+2. If one incremental backup is lost or corrupted, all subsequent backups may become unusable.
+3. Higher potential for data inconsistency during restoration if backups are not properly managed.
