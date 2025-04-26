@@ -147,3 +147,73 @@ This strategy only copies data changes since the last backup of any kind—wheth
     ./backup_scripts/update.sh
     ./backup_scripts/backup_api.sh
     ```
+# Assignment 3
+
+## Building Docker Images
+
+1. **Build the Docker images**  
+   This will build two images: one for the database and one for the Django app.
+   ```bash
+   docker-compose build
+   ```
+
+   Or to build individually:
+   ```bash
+   docker build -t sqlite-db ./database
+   docker build -t api-app .
+   ```
+
+---
+
+## Deploying and Managing Containers using Docker Compose
+
+- **Start all containers:**
+  ```bash
+  docker-compose up -d
+  ```
+
+- **Stop all containers:**
+  ```bash
+  docker-compose down
+  ```
+
+- **View running containers:**
+  ```bash
+  docker ps
+  ```
+
+- **Rebuild and restart containers after changes:**
+  ```bash
+  docker-compose up -d --build
+  ```
+
+- **View container logs:**
+  ```bash
+  docker-compose logs
+  ```
+
+- **Execute commands inside the app container:**
+  ```bash
+  docker exec -it api bash
+  ```
+
+---
+
+## Troubleshooting Tips
+
+| Problem | Solution |
+|:--------|:---------|
+| `manage.py not found` error | Ensure your `Dockerfile` correctly copies your Django project files with `COPY . .` and that you are in the right working directory (`WORKDIR /home/app`). |
+| Database not persisting data | Make sure the `sqlite-data` volume is correctly mounted in both `app` and `database` services. Check `volumes` config in `docker-compose.yml`. |
+| App container exits immediately | Check the logs using `docker logs api` to see if there are Python errors or database connection problems. |
+| Port 8000 already in use | Stop any process using that port (`sudo lsof -i :8000`) and kill it, or change the port mapping in `docker-compose.yml`. |
+| Permissions error on `.sh` scripts | Ensure `students.sh` and `subjects.sh` have executable permissions (`chmod +x students.sh subjects.sh`) before building the Docker image. |
+| Container keeps restarting | Inspect the container logs carefully (`docker-compose logs`) for migration or startup issues in Django. |
+
+---
+
+## Notes
+- The Django app runs on **http://localhost:8000** by default.
+- Database files will persist under Docker volume `sqlite-data` even if containers are destroyed.
+
+---
