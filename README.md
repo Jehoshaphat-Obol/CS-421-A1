@@ -132,3 +132,18 @@ This strategy only copies data changes since the last backup of any kind—wheth
 1. Restoration can be slow and complex, as it requires the last full backup and every incremental backup made since then.
 2. If one incremental backup is lost or corrupted, all subsequent backups may become unusable.
 3. Higher potential for data inconsistency during restoration if backups are not properly managed.
+
+## Bash Script Usage
+
+1. Update permission to allow execution
+    ```bash
+    chmod +x ./backup_scripts/health_check.sh
+    chmod +x ./backup_scripts/update.sh
+    chmod +x ./backup_scripts/backup_api.sh
+    ```
+2. execute the files
+    ```bash
+    ./backup_scripts/health_check.sh
+    ./backup_scripts/update.sh
+    ./backup_scripts/backup_api.sh
+    ```

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python manage.py shell <<EOF
+python3 manage.py shell <<EOF
 from api.models import Subject
 subjects = [
     ('Principles of Programming Languages(CP 111)', 1),
