@@ -219,6 +219,7 @@ This strategy only copies data changes since the last backup of any kind—wheth
 
 
 ## Images Links in Docker Hub
+
 https://hub.docker.com/repository/docker/jehoshaphat/database/general
 https://hub.docker.com/repository/docker/jehoshaphat/app/general
 ---
