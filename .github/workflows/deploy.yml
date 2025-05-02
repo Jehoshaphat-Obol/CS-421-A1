@@ -71,3 +71,6 @@ jobs:
             chmod +x /home/ubuntu/app/backup_scripts/health_check.sh
             chmod +x /home/ubuntu/app/backup_scripts/update.sh
             chmod +x /home/ubuntu/app/backup_scripts/backup_api.sh
+
+            sudo docker-compose down
+            sudo docker-compose up --build -d
