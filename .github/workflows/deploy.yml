@@ -33,39 +33,9 @@ jobs:
           script: |
             # set env
             echo "${{ secrets.ENV }}" > /home/ubuntu/app/.env
-            # install nginx
-            sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
-            curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
-            gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
-            echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
-            echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" | sudo tee /etc/apt/preferences.d/99nginx
             sudo apt update
-            sudo apt install nginx
-
-            # setup nginx server
-            sudo systemctl stop nginx
-            sudo rm -f /etc/nginx/conf.d/app.conf
-            echo "server {
-                listen 80;
-                server_name ${{ secrets.HOST_DNS }};
-
-                location = /favicon.ico { access_log off; log_not_found off; }
-                location /static/ {
-                    alias /home/ubuntu/app/static/;
-                }
-
-                location / {
-                    proxy_pass http://127.0.0.1:8000;
-                    proxy_set_header Host \$host;
-                    proxy_set_header X-Real-IP \$remote_addr;
-                    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto \$scheme;
-                }
-            }" | sudo tee /etc/nginx/conf.d/app.conf
-            sudo systemctl restart nginx
             sudo chmod +x /home/ubuntu/ubuntu
             sudo chmod +x /home/ubuntu/app
-            sudo chown -R www-data:www-data /home/ubuntu/app/static/
             # set env for health check
             echo 'SERVER_HEALTH_LOG="${{ secrets.SERVER_HEALTH_LOG }}"' >> ~/.env
             chmod +x /home/ubuntu/app/backup_scripts/health_check.sh
