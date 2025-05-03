@@ -16,6 +16,7 @@ RUN chmod +x students.sh
 RUN chmod +x subjects.sh
 RUN ./students.sh
 RUN ./subjects.sh
+RUN rm -rf /var/lib/apt/lists/*
 
 CMD python3 manage.py runserver 0.0.0.0:8000
 EXPOSE 8000

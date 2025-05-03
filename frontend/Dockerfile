@@ -13,6 +13,7 @@ RUN apt install nginx -y
 RUN mv dist/* /var/www/html
 RUN rm -rf /home/app
 
+RUN rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80
 
