@@ -41,6 +41,7 @@ if not DEBUG:
         "ec2-13-60-162-177.eu-north-1.compute.amazonaws.com",
         "127.0.0.1",
         "localhost",
+        "172.20.0.4",
     ]
 
 
@@ -71,7 +72,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    "http://172.20.0.11",
+    "http://172.20.0.12",
+    "http://172.20.0.13",
+    ]
 
 ROOT_URLCONF = "cs_421_a1.urls"
 
