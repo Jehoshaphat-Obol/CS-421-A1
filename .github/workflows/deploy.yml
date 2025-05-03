@@ -73,4 +73,4 @@ jobs:
             chmod +x /home/ubuntu/app/backup_scripts/backup_api.sh
 
             sudo docker-compose down
-            sudo docker-compose up --build -d -f /home/ubuntu/app/docker-compose.yml
+            sudo docker-compose -f /home/ubuntu/app/docker-compose.yml up --build -d
