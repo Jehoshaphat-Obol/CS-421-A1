@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import axios from 'axios'
 
-const API = 'http://parrot/api'
+const API = 'http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/api'
 
 function App() {
   const [data, setData] = useState({})
