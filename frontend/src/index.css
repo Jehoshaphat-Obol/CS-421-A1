@@ -67,7 +67,7 @@ button:hover, table, tr, thead {
 }
 
 .data {
-  margin-x; auto;
+  margin-x: auto;
 }
 thead td {
   font-weight: bold;
