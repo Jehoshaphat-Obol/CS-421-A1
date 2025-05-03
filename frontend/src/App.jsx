@@ -19,7 +19,6 @@ function App() {
     <>
       <div className='fixed'>
         <h1>CS 421 - Reg.No E21-03-03796</h1>
-        <h2>Loading from: {data.app_id}</h2>
         <button onClick={async () => { getData('students/') }}>
           Students
         </button>
