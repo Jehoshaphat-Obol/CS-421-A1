@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import axios from 'axios'
 
@@ -21,6 +19,7 @@ function App() {
     <>
       <div className='fixed'>
         <h1>CS 421 - Reg.No E21-03-03796</h1>
+        <h2>Loading from: {data.app_id}</h2>
         <button onClick={async () => { getData('students/') }}>
           Students
         </button>

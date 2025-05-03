@@ -7,7 +7,24 @@
     <title>E21-03-03796</title>
   </head>
   <body>
+    <div id="node-id"></div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+        function displayNodeId() {
+            fetch(window.location.href) // Fetch the current page
+            .then(response => {
+                const nodeId = response.headers.get('X-Node-ID');
+                if (nodeId) {
+                    document.getElementById('node-id').innerText = 'Served by: ' + nodeId;
+                } else {
+                    document.getElementById('node-id').innerText = 'Node ID not found.';
+                }
+            });
+        }
+
+        // Call the function when the page loads
+        window.onload = displayNodeId;
+    </script>
   </body>
 </html>
