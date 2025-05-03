@@ -35,13 +35,13 @@ def parse_str_to_bool(text):
 
 DEBUG = parse_str_to_bool(os.getenv("DEBUG"))
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "172.20.0.3"]
 if not DEBUG:
     ALLOWED_HOSTS = [
         "ec2-13-60-162-177.eu-north-1.compute.amazonaws.com",
         "127.0.0.1",
         "localhost",
-        "172.20.0.4",
+        "172.20.0.3",
     ]
 
 
@@ -77,6 +77,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://172.20.0.11",
     "http://172.20.0.12",
     "http://172.20.0.13",
+    "http://parrot"
     ]
 
 ROOT_URLCONF = "cs_421_a1.urls"

@@ -2,13 +2,13 @@ import { useState } from 'react'
 import './App.css'
 import axios from 'axios'
 
-const API = 'http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/'
+const API = 'http://parrot/api'
 
 function App() {
   const [data, setData] = useState({})
 
   const getData = async (endpoint) => {
-    const response = await axios.get(`http://ec2-13-60-162-177.eu-north-1.compute.amazonaws.com/${endpoint}`)
+    const response = await axios.get(`${API}/${endpoint}`)
     let data = {}
     data.columns = Object.keys(response.data[0])
     data.body = response.data
