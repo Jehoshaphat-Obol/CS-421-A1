@@ -218,8 +218,34 @@ This strategy only copies data changes since the last backup of any kind—wheth
 - Database files will persist under Docker volume `sqlite-data` even if containers are destroyed.
 
 
+# Assignment 4
+- Instructions to build/run front-end containers.
+  ```bash
+  cd ./frontend
+  docker build -t frontend .
+  docker run -id --name myfrontend -p 80:80 frontend
+  ```
+- Load balancer setup details (round-robin, health checks).
+  inspect the nginx.conf file. by default nginx uses round robin for load distribution as for health check. this is a feature available only to nginx plus(commercial), **However** strategies frontend apps are configured to have a maximum error rate of 5 errors for every 30seconds. if the error limit is reached. nginx simple flags the server as available for the comming 30s and then tries again.
+- AWS Setup
+  1. simply install docker and docker compose
+  2. pull the repo
+  3. create a bridge network for the containers
+    ```bash
+      docker network create \
+      --driver bridge \
+      --subnet 172.20.0.0/24 \
+      my-bridge
+    ```
+  4. enter in the project directory and run
+    ```bash
+      docker-compose up --build -d
+    ```
+
 ## Images Links in Docker Hub
 
-https://hub.docker.com/repository/docker/jehoshaphat/database/general
-https://hub.docker.com/repository/docker/jehoshaphat/app/general
+- [Database](https://hub.docker.com/repository/docker/jehoshaphat/database/general)
+- [Backend](https://hub.docker.com/repository/docker/jehoshaphat/app/general)
+- [Load Balancer](https://hub.docker.com/repository/docker/jehoshaphat/load_balancer/general)
+- [frontend](https://hub.docker.com/repository/docker/jehoshaphat/frontend-app/general)
 ---
